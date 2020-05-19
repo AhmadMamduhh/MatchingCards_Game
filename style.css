@@ -106,13 +106,29 @@
         margin-top: 20px;
         background-color: #7dffe9;
       }
-
+      .flip-card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+        padding: 8px;
+        text-align: center;
+        height: 85px;
+        margin-top: 20px;
+        background-color: #7dffe9;
+        perspective: 1000px; 
+      }
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
       #restart {
         text-align: center;
         color: rgb(0, 216, 115);
         height: 50px;
         width: 300 px;
-        margin-left: 710px;
+        margin-left: 810px;
         font-size: 120%;
         font-family: 'Wellfleet', serif;
         margin-bottom: 40px;
