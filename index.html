@@ -2,15 +2,42 @@
 <html>
 
 <head>
-  <title>Matching Cards Game</title>
-  <link rel="stylesheet" href="style.css" />
+    <title>Matching Cards Game</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <h1>
-    Matching Cards Game
-  </h1>
-  <script src="script.js"></script>
+    <h1>
+        Matching Cards Game
+    </h1>
+
+    <!--The difficulty of the current game-->
+    <div id="level">
+        Level:
+        <button id="easy">
+      Easy
+    </button>
+        <button id="medium">
+        Medium
+      </button>
+        <button id="hard">
+          Hard
+        </button>
+    </div>
+
+<!-- The score of the current game-->
+    <div id="score">
+        Score:
+
+        <span id="scoreValue"> 0 </span>
+    </div>
+
+<!-- This determines whose turn it is-->
+    <div id="turn">
+        <span id="currentPlayer"> Player 1's turn </span>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

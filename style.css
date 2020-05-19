@@ -1,15 +1,52 @@
-@import url(http://fonts.googleapis.com/css?family=Wellfleet);
+    @import url(http://fonts.googleapis.com/css?family=Wellfleet);
+    body {
+        background-color: #205243;
+        color: #fff;
+        font-family: 'Wellfleet', times, serif;
+        font-size: 150%;
+        margin: 0px 0px 0px 0px;
+    }
 
-body {
-	background-color: #205243;
-	color: #fff;
-	font-family: 'Wellfleet', times, serif;
-	font-size: 150%;
-	margin: 0px 0px 0px 0px;}
+    h1 {
+        background-repeat: no-repeat;
+        white-space: nowrap;
+        height: 109px;
+        width: 643px;
+        margin: 20px auto;
+    }
 
-h1 {
-	background-repeat: no-repeat;
-	white-space: nowrap;
-	height: 109px;
-	width: 643px;
-	margin: 40px auto;}
+    #level {
+        text-align: left;
+        height: 30px;
+        width: 300 px;
+        margin: 10px auto;
+        padding-left: 2%;
+    }
+
+    #easy {
+        color: green;
+    }
+
+    #medium {
+        color: orange;
+    }
+
+    #hard {
+        color: red;
+    }
+
+    #score {
+        text-align: left;
+        height: 30px;
+        width: 300 px;
+        margin: 10px auto;
+        padding-left: 2%;
+    }
+
+    #turn {
+        text-align: left;
+        height: 30px;
+        width: 300 px;
+        margin: 10px auto;
+        padding-left: 2%;
+    }
