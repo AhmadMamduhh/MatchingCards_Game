@@ -10,19 +10,19 @@
     <h1>
         Matching Cards Game
     </h1>
+    <!--The start button-->
+    <div id="startGame">
+        <button id="start">START</button>
+    </div>
 
     <!--The difficulty of the current game-->
     <div id="level">
-        Level:
-        <button id="easy">
-      Easy
-    </button>
-        <button id="medium">
-        Medium
-      </button>
-        <button id="hard">
-          Hard
-        </button>
+        Level: 
+        <select id="levels" name="levels">
+            <option value="easy" id="easy">Easy</option>
+            <option value="medium" id="medium" selected="selected">  Medium</option>
+            <option value="hard" id="hard">Hard</option>
+        </select>
     </div>
 
 <!-- The score of the current game-->
@@ -97,6 +97,10 @@
               <div class="card"> card 16</div>
             </div>
           </div>
+    </div>
+
+    <div id="restartGame">
+        <button id="restart">RESTART</button>
     </div>
 
     <script src="script.js"></script>

@@ -16,6 +16,16 @@
         margin: 20px auto;
     }
 
+    #start {
+        text-align: center;
+        color: rgb(0, 216, 115);
+        height: 50px;
+        width: 300 px;
+        margin-left: 710px;
+        font-size: 120%;
+        font-family: 'Wellfleet', serif;
+    }
+
     #level {
         text-align: left;
         height: 30px;
@@ -68,7 +78,7 @@
     }
 
     #game {
-        height: 600px;
+        height: 550px;
         width: 50% px;
         margin: 20px auto;
     }
@@ -77,8 +87,6 @@
         box-sizing: border-box;
       }
       
-      
-      /* cards side by side */
       .column {
         float: left;
         padding: 0 10px;
@@ -89,7 +97,7 @@
           margin: 10px 0px 0px 250px;
       }
       
-      /* Style the counter cards */
+
       .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
         padding: 8px;
@@ -98,4 +106,14 @@
         margin-top: 20px;
         background-color: #7dffe9;
       }
-      
+
+      #restart {
+        text-align: center;
+        color: rgb(0, 216, 115);
+        height: 50px;
+        width: 300 px;
+        margin-left: 710px;
+        font-size: 120%;
+        font-family: 'Wellfleet', serif;
+        margin-bottom: 40px;
+    }
