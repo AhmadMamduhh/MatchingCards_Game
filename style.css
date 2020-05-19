@@ -2,15 +2,16 @@
     body {
         background-color: #205243;
         color: #fff;
-        font-family: 'Wellfleet', times, serif;
+        font-family: 'Wellfleet', serif;
         font-size: 150%;
         margin: 0px 0px 0px 0px;
     }
 
     h1 {
+        text-align: center;
         background-repeat: no-repeat;
         white-space: nowrap;
-        height: 109px;
+        height: 68px;
         width: 643px;
         margin: 20px auto;
     }
@@ -24,14 +25,29 @@
     }
 
     #easy {
+        height: 25px;
+        width: 50px;
+        margin: 10px auto;
+        padding: 5px;
+        font-family: 'Wellfleet', serif;
         color: green;
     }
 
     #medium {
+        height: 25px;
+        width: 64px;
+        margin: 10px auto;
+        padding: 5px;
+        font-family: 'Wellfleet', times, serif; 
         color: orange;
     }
 
     #hard {
+        height: 25px;
+        width: 50px;
+        margin: 10px auto;
+        padding: 5px;
+        font-family: 'Wellfleet', times, serif;
         color: red;
     }
 
@@ -50,3 +66,36 @@
         margin: 10px auto;
         padding-left: 2%;
     }
+
+    #game {
+        height: 600px;
+        width: 50% px;
+        margin: 20px auto;
+    }
+
+    * {
+        box-sizing: border-box;
+      }
+      
+      
+      /* cards side by side */
+      .column {
+        float: left;
+        padding: 0 10px;
+        width: 25%;
+      }
+
+      .row{
+          margin: 10px 0px 0px 250px;
+      }
+      
+      /* Style the counter cards */
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+        padding: 8px;
+        text-align: center;
+        height: 85px;
+        margin-top: 20px;
+        background-color: #7dffe9;
+      }
+      
