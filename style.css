@@ -1,0 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Wellfleet);
+
+body {
+	background-color: #205243;
+	color: #fff;
+	font-family: 'Wellfleet', times, serif;
+	font-size: 150%;
+	margin: 0px 0px 0px 0px;}
+
+h1 {
+	background-repeat: no-repeat;
+	white-space: nowrap;
+	height: 109px;
+	width: 643px;
+	margin: 40px auto;}
