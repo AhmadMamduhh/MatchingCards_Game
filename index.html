@@ -12,7 +12,7 @@
     </h1>
     <!--The start button-->
     <div id="startGame">
-        <button id="start">START</button>
+        <button id="start" onclick="startEvent()">START</button>
     </div>
 
     <!--The difficulty of the current game-->
@@ -26,19 +26,15 @@
     </div>
 
 <!-- The score of the current game-->
-    <div id="score">
-        Score:
-
-        <span id="scoreValue"> 0 </span>
-    </div>
+    <div id="score"></div>
 
 <!-- This determines whose turn it is-->
     <div id="turn">
-        <span id="currentPlayer"> Player 1's turn </span>
+        
     </div>
-
+<!-- The cards of the game-->
     <div id="game">
-        <div class="row">
+ <!--   <div class="row">
             <div class="column">
               <div class="card">card 1</div>
             </div>
@@ -111,13 +107,13 @@
                 <div class="column">
                   <div class="card"> card 20</div>
                 </div>
-              </div>
+              </div> -->
     </div>
 
 
 
     <div id="restartGame">
-        <button id="restart">RESTART</button>
+
     </div>
 
     <script src="script.js"></script>
