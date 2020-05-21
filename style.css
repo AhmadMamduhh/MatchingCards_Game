@@ -28,10 +28,16 @@
 
     #level {
         text-align: left;
-        height: 30px;
+        font-size: 40px;
+        height: 40px;
         width: 300 px;
         margin: 10px auto;
         padding-left: 2%;
+    }
+    #levels{
+        height: 40px;
+        width: 200px;
+        font-size: 30px;
     }
 
     #easy {
