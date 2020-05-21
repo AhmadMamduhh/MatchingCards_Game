@@ -19,6 +19,7 @@ function startEvent() {
     let gameHTMLMedium = gameHTMLEasy + '<div class="row"> <div class="column"> <div class="card"> card 13 </div > </div> <div class="column"> <div class="card"> card 14 </div > </div> <div class="column"> <div class="card"> card 15 </div > </div> <div class="column"> <div class="card"> card 16 </div > </div> </div>'
     let gameHTMLHard = gameHTMLMedium + '<div class="row"> <div class="column"> <div class="card"> card 17 </div > </div> <div class="column"> <div class="card"> card 18 </div > </div> <div class="column"> <div class="card"> card 19 </div > </div> <div class="column"> <div class="card"> card 20 </div > </div> </div>'
     element = document.getElementById("game");
+    let columnClassElements = document.getElementsByClassName("column")
     if(level == 'easy'){
         element.innerHTML = gameHTMLEasy
     }
@@ -27,6 +28,15 @@ function startEvent() {
     }
     else if(level =='hard'){
         element.innerHTML = gameHTMLHard;
+    }
+    // Adding the question mark icon to the cards
+    for(var i = 0; i < columnClassElements.length;i++){
+        columnClassElements[i].innerHTML = `<button class="card"><img src="images/question_mark.png"/>`
+    }
+    // Adding functionality to each card
+    let cardClassElements = document.getElementsByClassName("card")
+    for(let i = 0; i < cardClassElements.length;i++){
+        cardClassElements[i].onclick = function(){cardClicked(i);}
     }
    
 
@@ -58,4 +68,8 @@ function restartEvent(){
     element = document.getElementById("startGame");
     element.innerHTML = '<button id="start" onclick="startEvent()">START</button>';
 
+}
+
+function cardClicked(par){
+alert("hey " + par);
 }

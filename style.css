@@ -99,20 +99,28 @@
       
 
       .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4); /* this adds the "card" effect */
         padding: 8px;
         text-align: center;
-        height: 85px;
+        height: 90px;
+        width: 50%;
         margin-top: 20px;
-        background-color: #7dffe9;
+        background-color: #fff;
+        color: #005a44;
       }
+
+      .cardBtn {
+        height: 100%;
+        width: 100%;
+        background-color: #3bf5cd;
+    }
       .flip-card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
         padding: 8px;
         text-align: center;
         height: 85px;
         margin-top: 20px;
-        background-color: #7dffe9;
+        background-color: #44dbc2;
         perspective: 1000px; 
       }
       .flip-card-inner {
@@ -128,7 +136,7 @@
         color: rgb(0, 216, 115);
         height: 50px;
         width: 300 px;
-        margin-left: 53%;
+        margin-left: 50%;
         font-size: 120%;
         font-family: 'Wellfleet', serif;
         margin-bottom: 40px;
