@@ -11,7 +11,7 @@
         text-align: center;
         background-repeat: no-repeat;
         white-space: nowrap;
-        height: 68px;
+        height: 50px;
         width: 643px;
         margin: 20px auto;
     }
@@ -29,9 +29,10 @@
     #level {
         text-align: left;
         font-size: 40px;
-        height: 40px;
+        height: 20px;
         width: 300 px;
         margin: 10px auto;
+        margin-bottom: 40px;
         padding-left: 2%;
     }
     #levels{
@@ -67,40 +68,53 @@
         color: red;
     }
 
+    #player1info{
+        text-align: left;
+        width: 33%;
+        margin-left: 25px;
+    }
+
+    #player2info{
+        text-align: left;
+        width: 33%;
+        margin-left: 25px;
+    }
+
     #score {
         text-align: left;
-        height: 30px;
+        height: 60px;
         width: 300 px;
         margin: 10px auto;
+        font-size: 20px;
         padding-left: 2%;
+        padding-bottom: 10px;
     }
 
     #turn {
         text-align: left;
         height: 30px;
         width: 300 px;
-        margin: 10px auto;
-        padding-left: 2%;
+        padding-top: 50px;
+        padding-left: 3%;
     }
 
     #game {
         height: 550px;
         width: 50% px;
         margin: 20px auto;
-    }
-
-    * {
         box-sizing: border-box;
-      }
+    }
       
       .column {
         float: left;
         padding: 0 10px;
         width: 25%;
+        box-sizing: border-box;
       }
 
       .row{
           margin: 10px 0px 0px 250px;
+          box-sizing: border-box;
       }
       
 
@@ -113,8 +127,9 @@
         margin-top: 20px;
         background-color: #fff;
         color: #005a44;
+        box-sizing: border-box;
       }
-      
+
       #restart {
         text-align: center;
         color: rgb(0, 216, 115);
@@ -124,4 +139,19 @@
         font-size: 120%;
         font-family: 'Wellfleet', serif;
         margin-bottom: 40px;
+    }
+
+    #celebration{
+        height: 400px;
+        width: 60% px;
+        margin-left: 43%;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    #sad{
+        margin-left: 42%;
+        height: 60%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
     }

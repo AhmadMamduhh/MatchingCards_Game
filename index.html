@@ -25,6 +25,7 @@
         </select>
     </div>
 
+
 <!-- The score of the current game-->
     <div id="score"></div>
 
@@ -32,8 +33,32 @@
     <div id="turn">
         
     </div>
-<!-- The cards of the game-->
+<!-- The game board shall be here-->
     <div id="game">
+            <div id="player1info">
+                    <label for="player1name">Player 1's name: </label>
+                    <input type="text" id="player1name" name="player1name"> <br/><br/>
+                    <label for="player1avatar"> Player 1's avatar: </label>
+                    <input type="radio" id="clown" class="avatar1" name="avatar1" value="images/clown.png">
+                    <label for="clown"><img src="images/clown.png"/></label>
+                    <input type="radio" id="batman" class="avatar1" name="avatar1" value="images/batman.png">
+                    <label for="batman"><img src="images/batman.png"/></label>
+                    <input type="radio" id="superman" class="avatar1" name="avatar1" value="images/superman.png">
+                    <label for="superman"><img src="images/superman.png"/></label>
+                    <hr>
+            </div>
+                
+            <div id="player2info">
+                        <label for="player2name">Player 2's name: </label>
+                        <input type="text" id="player2name" name="player2name"><br/><br/>
+                        <label for="player2avatar"> Player 2's avatar: </label>
+                        <input type="radio" id="clown2" class="avatar2" name="avatar2" value="images/clown.png">
+                        <label for="clown2"><img src="images/clown.png"/></label>
+                        <input type="radio" id="batman2" class="avatar2" name="avatar2" value="images/batman.png">
+                        <label for="batman2"><img src="images/batman.png"/></label>
+                        <input type="radio" id="superman2" class="avatar2" name="avatar2" value="images/superman.png">
+                        <label for="superman2"><img src="images/superman.png"/></label>
+            </div>
     <!--   <div class="row">
             <div class="column">
               <button class="card"><img src="images/question_mark.png"/></button>
