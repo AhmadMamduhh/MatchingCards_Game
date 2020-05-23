@@ -113,10 +113,14 @@ let secondClickedCard = ''
 let previousImagePosition
 let scorePlayer1 = 0
 let scorePlayer2 = 0
-const turnPlayer1 = "Player 1's Turn"
-const turnPlayer2 = "Player 2's Turn"
+let turnPlayer1 
+let turnPlayer2 
 
 function cardClicked(par, positions) {
+    
+    // Setting names of players each turn
+    turnPlayer1 = player1Name + "'s turn"
+    turnPlayer2 = player2Name + "'s turn"
 
     // This function contains the game logic and the events that occur when players click the cards
 
