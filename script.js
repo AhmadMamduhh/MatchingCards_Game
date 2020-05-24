@@ -1,8 +1,8 @@
-
 let player1Name
 let player2Name
 let player1Avatar = ''
 let player2Avatar = ''
+
 function startEvent() {
 
     // Check that players have entered their names
@@ -71,23 +71,21 @@ function startEvent() {
         element.innerHTML = gameHTMLHard;
     }
 
-    // Shuffling the images array
-    shuffleArray(imagesPaths)
 
-    // Allocate a position for each of the images
+    // Allocate a position for each of the images in the images matrix
     let positions = new Array(imagesPaths.length * 2)
     for (let i = 0; i < positions.length; i++) {
         if (i < positions.length / 2)
             positions[i] = imagesPaths[i]
-        else if (i == positions.length / 2) {
-            shuffleArray(imagesPaths)
-            positions[i] = imagesPaths[i - (positions.length / 2)]
-        }
         else {
             positions[i] = imagesPaths[i - (positions.length / 2)]
         }
     }
-    console.log(positions)
+
+    // Shuffling the images matrix so that the positions are random at each gaming session
+    shuffleArray(positions)
+
+    // console.log(positions) // Printing the answers for the game for debugging reasons
 
     // Adding the question mark icon to the cards
     let columnClassElements = document.getElementsByClassName("column")
