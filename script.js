@@ -51,7 +51,8 @@ function startEvent() {
     // Loading the images
     let imagesPaths = ['images/joker.png', 'images/doghouse.png', 'images/candy.png',
         'images/fireplace.png', 'images/kobe.png', 'images/umbrella.png', 'images/teddy.png',
-        'images/diamond.png','images/coronavirus.png','images/lamp.png', 'images/robot.png', 'images/crown.png']
+        'images/diamond.png', 'images/coronavirus.png', 'images/lamp.png', 'images/robot.png', 'images/crown.png'
+    ]
 
 
     // Show the cards of the game
@@ -62,12 +63,10 @@ function startEvent() {
     if (level == 'easy') {
         element.innerHTML = gameHTMLEasy
         imagesPaths.splice(8, 11)
-    }
-    else if (level == 'medium') {
+    } else if (level == 'medium') {
         element.innerHTML = gameHTMLMedium;
         imagesPaths.splice(10, 11)
-    }
-    else if (level == 'hard') {
+    } else if (level == 'hard') {
         element.innerHTML = gameHTMLHard;
     }
 
@@ -95,7 +94,7 @@ function startEvent() {
     // Adding functionality to each card
     let cardClassElements = document.getElementsByClassName("card")
     for (let i = 0; i < cardClassElements.length; i++) {
-        cardClassElements[i].onclick = function () { cardClicked(i, positions); }
+        cardClassElements[i].onclick = function() { cardClicked(i, positions); }
     }
 
 
@@ -111,11 +110,11 @@ let secondClickedCard = ''
 let previousImagePosition
 let scorePlayer1 = 0
 let scorePlayer2 = 0
-let turnPlayer1 
-let turnPlayer2 
+let turnPlayer1
+let turnPlayer2
 
 function cardClicked(par, positions) {
-    
+
     // Setting names of players each turn
     turnPlayer1 = player1Name + "'s turn"
     turnPlayer2 = player2Name + "'s turn"
@@ -126,27 +125,26 @@ function cardClicked(par, positions) {
         if (counter == 0) {
             // Getting the cards elements from the document
             let cards = document.getElementsByClassName('card')
-            // Modifying the clicked card's image
+                // Modifying the clicked card's image
             cards[par].innerHTML = `<img src="` + positions[par] + `"/>`
-            // cards[par].onclick = function(){}
+                // cards[par].onclick = function(){}
             firstClickedCard = positions[par]
             previousImagePosition = par
             counter = 1
-        }
-        else if (counter == 1) {
+        } else if (counter == 1) {
             if (par == previousImagePosition) {
                 return
             }
             counter = -1
             currentPlayer = -1
-            // Getting the cards elements from the document
+                // Getting the cards elements from the document
             let cards = document.getElementsByClassName('card')
-            // Modifying the clicked card's image
+                // Modifying the clicked card's image
             cards[par].innerHTML = `<img src="` + positions[par] + `"/>`
             secondClickedCard = positions[par]
 
             if (firstClickedCard == secondClickedCard) {
-                setTimeout(function () {
+                setTimeout(function() {
                     cards[previousImagePosition].innerHTML = ``;
                     cards[par].innerHTML = ``;
                     document.getElementById("turn").innerText = turnPlayer2
@@ -155,13 +153,12 @@ function cardClicked(par, positions) {
                 }, 1000)
 
                 scorePlayer1 += 2
-                cards[previousImagePosition].onclick = function () { }
-                cards[par].onclick = function () { }
+                cards[previousImagePosition].onclick = function() {}
+                cards[par].onclick = function() {}
                 let scoreValue1 = document.getElementById("scoreValue1")
                 scoreValue1.innerText = "" + scorePlayer1
-            }
-            else {
-                setTimeout(function () {
+            } else {
+                setTimeout(function() {
                     cards[previousImagePosition].innerHTML = `<img src="images/question_mark.png"/>`;
                     cards[par].innerHTML = `<img src="images/question_mark.png"/>`;
                     document.getElementById("turn").innerText = turnPlayer2
@@ -172,25 +169,23 @@ function cardClicked(par, positions) {
 
             if ((scorePlayer1 + scorePlayer2) == positions.length) {
                 if (scorePlayer1 == scorePlayer2) {
-                    setTimeout(function () {
+                    setTimeout(function() {
                         let gameHTML = document.getElementById("game");
                         gameHTML.innerHTML = '<h1> The game has ended in a draw. </h1> <br> <img id="sad" src="images/sad.png"/>';
                         [scorePlayer1, scorePlayer2] = [0, 0];
                         currentPlayer = 1;
                     }, 1000)
-                }
-                else if (scorePlayer1 > scorePlayer2) {
-                    setTimeout(function () {
+                } else if (scorePlayer1 > scorePlayer2) {
+                    setTimeout(function() {
                         let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1> <br> <img id="celebration" src="images/celebration.png"/>`;
+                        gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
                         [scorePlayer1, scorePlayer2] = [0, 0];
                         currentPlayer = 1;
                     }, 1000)
-                }
-                else if (scorePlayer1 < scorePlayer2) {
-                    setTimeout(function () {
+                } else if (scorePlayer1 < scorePlayer2) {
+                    setTimeout(function() {
                         let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1> <br> <img id="celebration" src="images/celebration.png"/>`;
+                        gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
                         [scorePlayer1, scorePlayer2] = [0, 0];
                         currentPlayer = 1;
                     }, 1000)
@@ -198,33 +193,30 @@ function cardClicked(par, positions) {
             }
 
         }
-    }
-
-    else if (currentPlayer == 2) {
+    } else if (currentPlayer == 2) {
 
         if (counter == 0) {
             // Getting the cards elements from the document
             let cards = document.getElementsByClassName('card')
-            // Modifying the clicked card's image
+                // Modifying the clicked card's image
             cards[par].innerHTML = `<img src="` + positions[par] + `"/>`
             firstClickedCard = positions[par]
             previousImagePosition = par
             counter = 1
-        }
-        else if (counter == 1) {
+        } else if (counter == 1) {
             if (par == previousImagePosition) {
                 return
             }
             counter = -1
             currentPlayer = -1
-            // Getting the cards elements from the document
+                // Getting the cards elements from the document
             let cards = document.getElementsByClassName('card')
-            // Modifying the clicked card's image
+                // Modifying the clicked card's image
             cards[par].innerHTML = `<img src="` + positions[par] + `"/>`
             secondClickedCard = positions[par]
 
             if (firstClickedCard == secondClickedCard) {
-                setTimeout(function () {
+                setTimeout(function() {
                     cards[previousImagePosition].innerHTML = ``;
                     cards[par].innerHTML = ``;
                     document.getElementById("turn").innerText = turnPlayer1
@@ -233,13 +225,12 @@ function cardClicked(par, positions) {
                 }, 1000)
 
                 scorePlayer2 += 2
-                cards[previousImagePosition].onclick = function () { }
-                cards[par].onclick = function () { }
+                cards[previousImagePosition].onclick = function() {}
+                cards[par].onclick = function() {}
                 let scoreValue2 = document.getElementById("scoreValue2")
                 scoreValue2.innerText = "" + scorePlayer2
-            }
-            else {
-                setTimeout(function () {
+            } else {
+                setTimeout(function() {
                     cards[previousImagePosition].innerHTML = `<img src="images/question_mark.png"/>`;
                     cards[par].innerHTML = `<img src="images/question_mark.png"/>`;
                     document.getElementById("turn").innerText = turnPlayer1
@@ -250,23 +241,21 @@ function cardClicked(par, positions) {
 
             if ((scorePlayer1 + scorePlayer2) == positions.length) {
                 if (scorePlayer1 == scorePlayer2) {
-                    setTimeout(function () {
+                    setTimeout(function() {
                         let gameHTML = document.getElementById("game");
                         gameHTML.innerHTML = '<h1> The game has ended in a draw. </h1> <br> <img id="sad" src="images/sad.png"/>';
                         [scorePlayer1, scorePlayer2] = [0, 0];
                     }, 1000)
-                }
-                else if (scorePlayer1 > scorePlayer2) {
-                    setTimeout(function () {
+                } else if (scorePlayer1 > scorePlayer2) {
+                    setTimeout(function() {
                         let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1> <br> <img id="celebration" src="images/celebration.png"/>`;
+                        gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
                         [scorePlayer1, scorePlayer2] = [0, 0];
                     }, 1000)
-                }
-                else if (scorePlayer1 < scorePlayer2) {
-                    setTimeout(function () {
+                } else if (scorePlayer1 < scorePlayer2) {
+                    setTimeout(function() {
                         let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1> <br> <img id="celebration" src="images/celebration.png"/>`;
+                        gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
                         [scorePlayer1, scorePlayer2] = [0, 0];
                     }, 1000)
                 }
@@ -329,16 +318,16 @@ function restartEvent() {
     let avatar2Elements = document.getElementsByClassName('avatar2')
     for (let i = 0; i < avatar1Elements.length; i++) {
         if (avatar1Elements[i].value == player1Avatar)
-                avatar1Elements[i].checked = true;
+            avatar1Elements[i].checked = true;
         if (avatar2Elements[i].value == player2Avatar)
-                avatar2Elements[i].checked = true;
+            avatar2Elements[i].checked = true;
     }
 
-    if(player1Name == 'Player 1')
-            player1Name = ''
+    if (player1Name == 'Player 1')
+        player1Name = ''
 
-    if(player2Name == 'Player 2')
-            player2Name = ''
+    if (player2Name == 'Player 2')
+        player2Name = ''
     document.getElementById('player1name').value = player1Name
     document.getElementById('player2name').value = player2Name
 

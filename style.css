@@ -3,44 +3,45 @@
         background-color: #205243;
         color: #fff;
         font-family: 'Wellfleet', serif;
-        font-size: 150%;
+        font-size: 100%;
         margin: 0px 0px 0px 0px;
     }
-
+    
     h1 {
         text-align: center;
+        margin-left: 50%;
         background-repeat: no-repeat;
         white-space: nowrap;
         height: 50px;
         width: 643px;
-        margin: 20px auto;
+        margin: 15px auto;
     }
-
+    
     #start {
         text-align: center;
         color: rgb(0, 216, 115);
-        height: 50px;
+        height: 40px;
         width: 300 px;
-        margin-left: 46%;
-        font-size: 120%;
+        margin-left: 48%;
+        font-size: 100%;
         font-family: 'Wellfleet', serif;
     }
-
+    
     #level {
         text-align: left;
-        font-size: 40px;
+        font-size: 25px;
         height: 20px;
-        width: 300 px;
         margin: 10px auto;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         padding-left: 2%;
     }
-    #levels{
-        height: 40px;
-        width: 200px;
-        font-size: 30px;
+    
+    #levels {
+        height: 30px;
+        width: 150px;
+        font-size: 20px;
     }
-
+    
     #easy {
         height: 25px;
         width: 50px;
@@ -49,16 +50,16 @@
         font-family: 'Wellfleet', serif;
         color: green;
     }
-
+    
     #medium {
         height: 25px;
         width: 64px;
         margin: 10px auto;
         padding: 5px;
-        font-family: 'Wellfleet', times, serif; 
+        font-family: 'Wellfleet', times, serif;
         color: orange;
     }
-
+    
     #hard {
         height: 25px;
         width: 50px;
@@ -67,29 +68,29 @@
         font-family: 'Wellfleet', times, serif;
         color: red;
     }
-
-    #player1info{
+    
+    #player1info {
         text-align: left;
         width: 33%;
         margin-left: 25px;
     }
-
-    #player2info{
+    
+    #player2info {
         text-align: left;
         width: 33%;
         margin-left: 25px;
     }
-
+    
     #score {
         text-align: left;
-        height: 60px;
+        height: 50px;
         width: 300 px;
         margin: 10px auto;
         font-size: 20px;
         padding-left: 2%;
         padding-bottom: 10px;
     }
-
+    
     #turn {
         text-align: left;
         height: 30px;
@@ -97,60 +98,61 @@
         padding-top: 50px;
         padding-left: 3%;
     }
-
+    
     #game {
-        height: 550px;
+        height: 400px;
         width: 50% px;
         margin: 20px auto;
         box-sizing: border-box;
     }
-      
-      .column {
+    
+    .column {
         float: left;
-        padding: 0 10px;
+        padding: 0 5px;
         width: 25%;
         box-sizing: border-box;
-      }
-
-      .row{
-          margin: 10px 0px 0px 250px;
-          box-sizing: border-box;
-      }
-      
-
-      .card {
-        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4); /* this adds the "card" effect */
-        padding: 8px;
+    }
+    
+    .row {
+        margin: 2px 0px 0px 250px;
+        box-sizing: border-box;
+    }
+    
+    .card {
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4);
+        /* this adds the "card" effect */
+        padding: 5px;
         text-align: center;
-        height: 90px;
+        height: 75px;
         width: 50%;
-        margin-top: 20px;
+        margin-top: 15px;
         background-color: #fff;
         color: #005a44;
         box-sizing: border-box;
-      }
-
-      #restart {
+    }
+    
+    #restart {
         text-align: center;
         color: rgb(0, 216, 115);
-        height: 50px;
+        height: 40px;
         width: 300 px;
-        margin-left: 48%;
-        font-size: 120%;
+        margin-left: 50%;
+        font-size: 100%;
         font-family: 'Wellfleet', serif;
         margin-bottom: 40px;
+        margin-top: 50px;
     }
-
-    #celebration{
-        height: 400px;
+    
+    #celebration {
+        height: 300px;
         width: 60% px;
-        margin-left: 43%;
+        margin-left: 45%;
         margin-bottom: 10px;
         box-sizing: border-box;
     }
-
-    #sad{
-        margin-left: 42%;
+    
+    #sad {
+        margin-left: 45%;
         height: 60%;
         margin-bottom: 20px;
         box-sizing: border-box;
