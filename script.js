@@ -5,7 +5,7 @@ let player2Avatar = ''
 
 function startEvent() {
 
-    // Check that players have entered their names
+    // Reading players' names
     player1Name = document.getElementById('player1name').value
     player2Name = document.getElementById('player2name').value
 
@@ -43,7 +43,7 @@ function startEvent() {
 
     // Show the score of each player and whose turn it is
     element = document.getElementById("score");
-    element.innerHTML = `<img src="${player1Avatar}"/> ${player1Name}'s Score: <span id="scoreValue1"> 0 </span> <br> <img src="${player2Avatar}"/> ${player2Name}'s Score: <span id="scoreValue2"> 0 </span>`;
+    element.innerHTML = `<img src="${player1Avatar}"/> ${player1Name}'s Score: <span id="scoreValue1"> 0 </span> &nbsp;&nbsp; <img src="${player2Avatar}"/> ${player2Name}'s Score: <span id="scoreValue2"> 0 </span>`;
     element = document.getElementById("turn");
     element.innerHTML = `<span id="currentPlayer"> ${player1Name}'s turn </span>`;
 
@@ -72,19 +72,19 @@ function startEvent() {
 
 
     // Allocate a position for each of the images in the images matrix
-    let positions = new Array(imagesPaths.length * 2)
-    for (let i = 0; i < positions.length; i++) {
-        if (i < positions.length / 2)
-            positions[i] = imagesPaths[i]
+    let imagesMatrix = new Array(imagesPaths.length * 2)
+    for (let i = 0; i < imagesMatrix.length; i++) {
+        if (i < imagesMatrix.length / 2)
+            imagesMatrix[i] = imagesPaths[i]
         else {
-            positions[i] = imagesPaths[i - (positions.length / 2)]
+            imagesMatrix[i] = imagesPaths[i - (imagesMatrix.length / 2)]
         }
     }
 
-    // Shuffling the images matrix so that the positions are random at each gaming session
-    shuffleArray(positions)
+    // Shuffling the images matrix so that the imagesMatrix are random at each gaming session
+    shuffleArray(imagesMatrix)
 
-    // console.log(positions) // Printing the answers for the game for debugging reasons
+    // console.log(imagesMatrix) // Printing the answers for the game for debugging reasons
 
     // Adding the question mark icon to the cards
     let columnClassElements = document.getElementsByClassName("column")
@@ -94,7 +94,7 @@ function startEvent() {
     // Adding functionality to each card
     let cardClassElements = document.getElementsByClassName("card")
     for (let i = 0; i < cardClassElements.length; i++) {
-        cardClassElements[i].onclick = function() { cardClicked(i, positions); }
+        cardClassElements[i].onclick = function() { cardClicked(i, imagesMatrix); }
     }
 
 
@@ -113,40 +113,44 @@ let scorePlayer2 = 0
 let turnPlayer1
 let turnPlayer2
 
-function cardClicked(par, positions) {
+function cardClicked(clickedCardIndex, imagesMatrix) {
+
+    // This function contains the game logic and the events that occur when players click the cards
+    // It takes two parameters, the first is the index of the card that is clicked.
+    // The second one is the images matrix where each card index correspond to an image
 
     // Setting names of players each turn
     turnPlayer1 = player1Name + "'s turn"
     turnPlayer2 = player2Name + "'s turn"
 
-    // This function contains the game logic and the events that occur when players click the cards
-
     if (currentPlayer == 1) {
         if (counter == 0) {
             // Getting the cards elements from the document
             let cards = document.getElementsByClassName('card')
-                // Modifying the clicked card's image
-            cards[par].innerHTML = `<img src="` + positions[par] + `"/>`
-                // cards[par].onclick = function(){}
-            firstClickedCard = positions[par]
-            previousImagePosition = par
+            // Modifying the clicked card's image
+            cards[clickedCardIndex].innerHTML = `<img src="` + imagesMatrix[clickedCardIndex] + `"/>`
+            firstClickedCard = imagesMatrix[clickedCardIndex]
+            previousImagePosition = clickedCardIndex
             counter = 1
         } else if (counter == 1) {
-            if (par == previousImagePosition) {
+            if (clickedCardIndex == previousImagePosition) {
                 return
             }
             counter = -1
             currentPlayer = -1
-                // Getting the cards elements from the document
-            let cards = document.getElementsByClassName('card')
-                // Modifying the clicked card's image
-            cards[par].innerHTML = `<img src="` + positions[par] + `"/>`
-            secondClickedCard = positions[par]
 
+            // Getting the cards elements from the document
+            let cards = document.getElementsByClassName('card')
+
+            // Modifying the clicked card's image
+            cards[clickedCardIndex].innerHTML = `<img src="` + imagesMatrix[clickedCardIndex] + `"/>`
+            secondClickedCard = imagesMatrix[clickedCardIndex]
+
+            // Checking if the two visible images match
             if (firstClickedCard == secondClickedCard) {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = ``;
-                    cards[par].innerHTML = ``;
+                    cards[clickedCardIndex].innerHTML = ``;
                     document.getElementById("turn").innerText = turnPlayer2
                     counter = 0;
                     currentPlayer = 2
@@ -154,71 +158,53 @@ function cardClicked(par, positions) {
 
                 scorePlayer1 += 2
                 cards[previousImagePosition].onclick = function() {}
-                cards[par].onclick = function() {}
+                cards[clickedCardIndex].onclick = function() {}
                 let scoreValue1 = document.getElementById("scoreValue1")
                 scoreValue1.innerText = "" + scorePlayer1
             } else {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = `<img src="images/question_mark.png"/>`;
-                    cards[par].innerHTML = `<img src="images/question_mark.png"/>`;
+                    cards[clickedCardIndex].innerHTML = `<img src="images/question_mark.png"/>`;
                     document.getElementById("turn").innerText = turnPlayer2
                     counter = 0;
                     currentPlayer = 2
                 }, 1000)
             }
 
-            if ((scorePlayer1 + scorePlayer2) == positions.length) {
-                if (scorePlayer1 == scorePlayer2) {
-                    setTimeout(function() {
-                        let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = '<h1> The game has ended in a draw. </h1> <br> <img id="sad" src="images/sad.png"/>';
-                        [scorePlayer1, scorePlayer2] = [0, 0];
-                        currentPlayer = 1;
-                    }, 1000)
-                } else if (scorePlayer1 > scorePlayer2) {
-                    setTimeout(function() {
-                        let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
-                        [scorePlayer1, scorePlayer2] = [0, 0];
-                        currentPlayer = 1;
-                    }, 1000)
-                } else if (scorePlayer1 < scorePlayer2) {
-                    setTimeout(function() {
-                        let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
-                        [scorePlayer1, scorePlayer2] = [0, 0];
-                        currentPlayer = 1;
-                    }, 1000)
-                }
-            }
+          gameResults(scorePlayer1, scorePlayer2, imagesMatrix)
 
         }
     } else if (currentPlayer == 2) {
 
         if (counter == 0) {
+
             // Getting the cards elements from the document
             let cards = document.getElementsByClassName('card')
-                // Modifying the clicked card's image
-            cards[par].innerHTML = `<img src="` + positions[par] + `"/>`
-            firstClickedCard = positions[par]
-            previousImagePosition = par
+
+            // Modifying the clicked card's image
+            cards[clickedCardIndex].innerHTML = `<img src="` + imagesMatrix[clickedCardIndex] + `"/>`
+            firstClickedCard = imagesMatrix[clickedCardIndex]
+            previousImagePosition = clickedCardIndex
             counter = 1
         } else if (counter == 1) {
-            if (par == previousImagePosition) {
+            if (clickedCardIndex == previousImagePosition) {
                 return
             }
             counter = -1
             currentPlayer = -1
-                // Getting the cards elements from the document
-            let cards = document.getElementsByClassName('card')
-                // Modifying the clicked card's image
-            cards[par].innerHTML = `<img src="` + positions[par] + `"/>`
-            secondClickedCard = positions[par]
 
+            // Getting the cards elements from the document
+            let cards = document.getElementsByClassName('card')
+
+            // Modifying the clicked card's image
+            cards[clickedCardIndex].innerHTML = `<img src="` + imagesMatrix[clickedCardIndex] + `"/>`
+            secondClickedCard = imagesMatrix[clickedCardIndex]
+
+            // Checking if the two visible images match 
             if (firstClickedCard == secondClickedCard) {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = ``;
-                    cards[par].innerHTML = ``;
+                    cards[clickedCardIndex].innerHTML = ``;
                     document.getElementById("turn").innerText = turnPlayer1
                     counter = 0;
                     currentPlayer = 1
@@ -226,40 +212,20 @@ function cardClicked(par, positions) {
 
                 scorePlayer2 += 2
                 cards[previousImagePosition].onclick = function() {}
-                cards[par].onclick = function() {}
+                cards[clickedCardIndex].onclick = function() {}
                 let scoreValue2 = document.getElementById("scoreValue2")
                 scoreValue2.innerText = "" + scorePlayer2
             } else {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = `<img src="images/question_mark.png"/>`;
-                    cards[par].innerHTML = `<img src="images/question_mark.png"/>`;
+                    cards[clickedCardIndex].innerHTML = `<img src="images/question_mark.png"/>`;
                     document.getElementById("turn").innerText = turnPlayer1
                     counter = 0;
                     currentPlayer = 1
                 }, 1000)
             }
 
-            if ((scorePlayer1 + scorePlayer2) == positions.length) {
-                if (scorePlayer1 == scorePlayer2) {
-                    setTimeout(function() {
-                        let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = '<h1> The game has ended in a draw. </h1> <br> <img id="sad" src="images/sad.png"/>';
-                        [scorePlayer1, scorePlayer2] = [0, 0];
-                    }, 1000)
-                } else if (scorePlayer1 > scorePlayer2) {
-                    setTimeout(function() {
-                        let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
-                        [scorePlayer1, scorePlayer2] = [0, 0];
-                    }, 1000)
-                } else if (scorePlayer1 < scorePlayer2) {
-                    setTimeout(function() {
-                        let gameHTML = document.getElementById("game");
-                        gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
-                        [scorePlayer1, scorePlayer2] = [0, 0];
-                    }, 1000)
-                }
-            }
+            gameResults(scorePlayer1, scorePlayer2, imagesMatrix)
         }
 
     }
@@ -338,9 +304,45 @@ function restartEvent() {
 
 }
 
+function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
+    if ((scorePlayer1 + scorePlayer2) == imagesMatrix.length) { // Condition that is true when the game board runs out of images
+        if (scorePlayer1 == scorePlayer2) { // Condition that is true when both players have the same score at the end
+            setTimeout(function() {
+                let gameHTML = document.getElementById("game");
+
+                // Remove the game board and show a sad emoji image declaring that it's a draw
+                gameHTML.innerHTML = '<h1> The game has ended in a draw. </h1> <br> <img id="sad" src="images/sad.png"/>'; 
+
+                [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
+            }, 1000)
+
+        } 
+        else if (scorePlayer1 > scorePlayer2) {// Condition that is true when player 1 has a higher score than player 2
+            setTimeout(function() {
+                let gameHTML = document.getElementById("game");
+
+                // Remove the game board and show a fireworks image declaring that player 1 has won
+                gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
+               
+                [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
+            }, 1000)
+        } 
+        else if (scorePlayer1 < scorePlayer2) { // Condition that is true when player 2 has a higher score than player 1
+            setTimeout(function() {
+                let gameHTML = document.getElementById("game");
+
+                // Remove the game board and show a fireworks image declaring that player 2 has won
+                gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
+
+                [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
+            }, 1000)
+        }
+    }
+}
+
 function shuffleArray(array) {
-    // This function takes an array and randomizes the positions of its elements
-    // It's used to shuffle the positions of the images differently each game
+    // This function takes an array and randomizes the imagesMatrix of its elements
+    // It's used to shuffle the imagesMatrix of the images differently each game
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
