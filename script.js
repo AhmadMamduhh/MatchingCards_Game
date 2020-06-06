@@ -5,6 +5,11 @@ let player2Avatar = ''
 
 function startEvent() {
 
+
+    // Change properties of the game board
+    document.getElementById("game").style.backgroundImage = `url("images/riddlerback.jpg")`;
+    document.getElementById("game").style.width = "99%"
+
     // Reading players' names
     player1Name = document.getElementById('player1name').value
     player2Name = document.getElementById('player2name').value
@@ -43,9 +48,12 @@ function startEvent() {
 
     // Show the score of each player and whose turn it is
     element = document.getElementById("score");
-    element.innerHTML = `<img src="${player1Avatar}"/> ${player1Name}'s Score: <span id="scoreValue1"> 0 </span> &nbsp;&nbsp; <img src="${player2Avatar}"/> ${player2Name}'s Score: <span id="scoreValue2"> 0 </span>`;
+    element.innerHTML = `<img src="${player1Avatar}"/> <b>${player1Name}'s Score:</b> <span id="scoreValue1"> 0 </span> &nbsp;&nbsp; <img src="${player2Avatar}"/><b> ${player2Name}'s Score:</b> <span id="scoreValue2"> 0 </span>`;
+    element.style.backgroundImage = "url('images/greenscore.jpg')"
+    element.style.width = "580px"
+    element.style.height = "80px"
     element = document.getElementById("turn");
-    element.innerHTML = `<span id="currentPlayer"> ${player1Name}'s turn </span>`;
+    element.innerHTML = `<span id="currentPlayer"> <h2><b>${player1Name}'s turn </b></h2> </span>`;
 
 
     // Loading the images
@@ -62,12 +70,15 @@ function startEvent() {
     element = document.getElementById("game");
     if (level == 'easy') {
         element.innerHTML = gameHTMLEasy
+        element.style.height = "370px"
         imagesPaths.splice(8, 11)
     } else if (level == 'medium') {
         element.innerHTML = gameHTMLMedium;
+        element.style.height = "470px"
         imagesPaths.splice(10, 11)
     } else if (level == 'hard') {
         element.innerHTML = gameHTMLHard;
+        element.style.height = "570px"
     }
 
 
@@ -100,7 +111,7 @@ function startEvent() {
 
     // Show the restart game button
     element = document.getElementById("restartGame");
-    element.innerHTML = '<button id="restart" onclick="restartEvent()">RESTART</button>';
+    element.innerHTML = '<div class="button Game-Button" id="restart" onclick="restartEvent()"> RESTART </div>';
 }
 
 let currentPlayer = 1;
@@ -120,8 +131,8 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
     // The second one is the images matrix where each card index correspond to an image
 
     // Setting names of players each turn
-    turnPlayer1 = player1Name + "'s turn"
-    turnPlayer2 = player2Name + "'s turn"
+    turnPlayer1 = `<h2><b> ${player1Name}'s turn</b></h2>`
+    turnPlayer2 = `<h2><b> ${player2Name}'s turn</b></h2>`
 
     if (currentPlayer == 1) {
         if (counter == 0) {
@@ -151,7 +162,9 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = ``;
                     cards[clickedCardIndex].innerHTML = ``;
-                    document.getElementById("turn").innerText = turnPlayer2
+                    cards[previousImagePosition].style.backgroundColor = "rgb(165, 165, 165)"
+                    cards[clickedCardIndex].style.backgroundColor = "rgb(165, 165, 165)"
+                    document.getElementById("turn").innerHTML = turnPlayer2
                     counter = 0;
                     currentPlayer = 2
                 }, 1000)
@@ -165,7 +178,7 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = `<img src="images/question_mark.png"/>`;
                     cards[clickedCardIndex].innerHTML = `<img src="images/question_mark.png"/>`;
-                    document.getElementById("turn").innerText = turnPlayer2
+                    document.getElementById("turn").innerHTML = turnPlayer2
                     counter = 0;
                     currentPlayer = 2
                 }, 1000)
@@ -205,7 +218,9 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = ``;
                     cards[clickedCardIndex].innerHTML = ``;
-                    document.getElementById("turn").innerText = turnPlayer1
+                    cards[previousImagePosition].style.backgroundColor = "rgb(165, 165, 165)"
+                    cards[clickedCardIndex].style.backgroundColor = "rgb(165, 165, 165)"
+                    document.getElementById("turn").innerHTML = turnPlayer1
                     counter = 0;
                     currentPlayer = 1
                 }, 1000)
@@ -219,7 +234,7 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = `<img src="images/question_mark.png"/>`;
                     cards[clickedCardIndex].innerHTML = `<img src="images/question_mark.png"/>`;
-                    document.getElementById("turn").innerText = turnPlayer1
+                    document.getElementById("turn").innerHTML = turnPlayer1
                     counter = 0;
                     currentPlayer = 1
                 }, 1000)
@@ -232,6 +247,11 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
 }
 
 function restartEvent() {
+
+    // Restore form background properties
+    document.getElementById("game").style.backgroundImage = `url("images/formback2.jpg")`
+    document.getElementById("game").style.width = "50%"
+    document.getElementById("game").style.height = "300px"
 
     // Reset the scores and make current the current turn belong to player 1
     scorePlayer1 = 0
@@ -249,6 +269,7 @@ function restartEvent() {
     // Make the score of each player and whose turn it is disappear
     element = document.getElementById("score");
     element.innerHTML = '';
+    element.style.height = "0px";
     element = document.getElementById("turn");
     element.innerHTML = '';
 
@@ -300,7 +321,7 @@ function restartEvent() {
 
     // Show the start game button
     element = document.getElementById("startGame");
-    element.innerHTML = '<button id="start" onclick="startEvent()">START</button>';
+    element.innerHTML = '<div class="button Game-Button" id="start" onclick="startEvent()"> START </div>';
 
 }
 
@@ -310,8 +331,9 @@ function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
             setTimeout(function() {
                 let gameHTML = document.getElementById("game");
 
-                // Remove the game board and show a sad emoji image declaring that it's a draw
-                gameHTML.innerHTML = '<h1> The game has ended in a draw. </h1> <br> <img id="sad" src="images/sad.png"/>'; 
+                // Remove the game board and show a fireworks image declaring that player 2 has won
+                gameHTML.innerHTML = `<h1> The game has ended in a draw. </h1>`
+                gameHTML.style.backgroundImage = `url("images/sad.png")`;
 
                 [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
             }, 1000)
@@ -321,9 +343,10 @@ function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
             setTimeout(function() {
                 let gameHTML = document.getElementById("game");
 
-                // Remove the game board and show a fireworks image declaring that player 1 has won
-                gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
-               
+                // Remove the game board and show a fireworks image declaring that player 2 has won
+                gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1>`
+                gameHTML.style.backgroundImage = `url("images/fireworks.gif")`;
+
                 [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
             }, 1000)
         } 
@@ -332,7 +355,8 @@ function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
                 let gameHTML = document.getElementById("game");
 
                 // Remove the game board and show a fireworks image declaring that player 2 has won
-                gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1> <br> <img id="celebration" src="images/fireworks.gif"/>`;
+                gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1>`
+                gameHTML.style.backgroundImage = `url("images/fireworks.gif")`;
 
                 [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
             }, 1000)

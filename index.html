@@ -12,7 +12,8 @@
     </h1>
     <!--The start button-->
     <div id="startGame">
-        <button id="start" onclick="startEvent()">START</button>
+        <div class="button Game-Button" id="start" onclick="startEvent()"> START </div>
+       <!-- <button id="start" onclick="startEvent()">START</button> -->
     </div>
 
     <!--The difficulty of the current game-->
@@ -35,7 +36,8 @@
     </div>
 <!-- The game board shall be here-->
     <div id="game">
-            <div id="player1info">
+          
+            <div id="player1info">   
                     <label for="player1name">Player 1's name: </label>
                     <input type="text" id="player1name" name="player1name"> <br/><br/>
                     <label for="player1avatar"> Player 1's avatar: </label>
@@ -58,7 +60,9 @@
                         <label for="batman2"><img src="images/batman.png"/></label>
                         <input type="radio" id="superman2" class="avatar2" name="avatar2" value="images/superman.png">
                         <label for="superman2"><img src="images/superman.png"/></label>
-            </div>
+            </div> 
+
+            
     <!--   <div class="row">
             <div class="column">
               <button class="card"><img src="images/question_mark.png"/></button>
@@ -135,6 +139,7 @@
               </div> -->
     </div>
 
+      <!-- <img id="menuImage" src="images/riddler.png"> -->
 
 
     <div id="restartGame">
