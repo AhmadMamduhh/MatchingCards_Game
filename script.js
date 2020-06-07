@@ -326,7 +326,7 @@ function restartEvent() {
 }
 
 function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
-    if ((scorePlayer1 + scorePlayer2) == 2) { // Condition that is true when the game board runs out of images
+    if ((scorePlayer1 + scorePlayer2) == imagesMatrix.length) { // Condition that is true when the game board runs out of images
         if (scorePlayer1 == scorePlayer2) { // Condition that is true when both players have the same score at the end
             setTimeout(function() {
                 let gameHTML = document.getElementById("game");
