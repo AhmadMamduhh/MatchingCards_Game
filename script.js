@@ -70,7 +70,7 @@ function startEvent() {
     element = document.getElementById("game");
     if (level == 'easy') {
         element.innerHTML = gameHTMLEasy
-        element.style.height = "370px"
+        element.style.height = "380px"
         imagesPaths.splice(8, 11)
     } else if (level == 'medium') {
         element.innerHTML = gameHTMLMedium;
@@ -326,13 +326,14 @@ function restartEvent() {
 }
 
 function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
-    if ((scorePlayer1 + scorePlayer2) == imagesMatrix.length) { // Condition that is true when the game board runs out of images
+    if ((scorePlayer1 + scorePlayer2) == 2) { // Condition that is true when the game board runs out of images
         if (scorePlayer1 == scorePlayer2) { // Condition that is true when both players have the same score at the end
             setTimeout(function() {
                 let gameHTML = document.getElementById("game");
 
                 // Remove the game board and show a fireworks image declaring that player 2 has won
-                gameHTML.innerHTML = `<h1> The game has ended in a draw. </h1>`
+                gameHTML.innerHTML = `<h1 class="draw-header"> The game has ended in a draw. </h1>`
+                gameHTML.style.height = "470px"
                 gameHTML.style.backgroundImage = `url("images/sad.png")`;
 
                 [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
@@ -344,7 +345,8 @@ function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
                 let gameHTML = document.getElementById("game");
 
                 // Remove the game board and show a fireworks image declaring that player 2 has won
-                gameHTML.innerHTML = `<h1> ${player1Name} has won the game! </h1>`
+                gameHTML.innerHTML = `<h1 class="win-header"> <b><i>${player1Name}</i></b> has won the game! </h1>`
+                gameHTML.style.height = "470px"
                 gameHTML.style.backgroundImage = `url("images/fireworks.gif")`;
 
                 [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
@@ -355,7 +357,8 @@ function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
                 let gameHTML = document.getElementById("game");
 
                 // Remove the game board and show a fireworks image declaring that player 2 has won
-                gameHTML.innerHTML = `<h1> ${player2Name} has won the game! </h1>`
+                gameHTML.innerHTML = `<h1 class="win-header"> <b><i>${player2Name}</i></b> has won the game! </h1>`
+                gameHTML.style.height = "470px"
                 gameHTML.style.backgroundImage = `url("images/fireworks.gif")`;
 
                 [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores

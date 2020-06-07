@@ -1,9 +1,10 @@
     @import url(http://fonts.googleapis.com/css?family=Wellfleet);
+    @import url(https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&display=swap);
     body {
         background-color: #38761d;
         background-image:url("images/greenback.jpg");
         color: #fff;
-        font-family: 'Wellfleet', serif;
+        font-family: 'Wellfleet', cursive;
         font-size: 100%;
         margin: 0px 0px 0px 0px;
     }
@@ -183,4 +184,12 @@
       .Game-Button:hover {
         box-shadow: 0 0 10px 0 #00d170 inset, 0 0 20px 2px #00d170;
         border: 3px solid #00d170;
+      }
+
+      .win-header{
+        color: #00d170;
+      }
+
+      .draw-header{
+        color: red;
       }
