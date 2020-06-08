@@ -1,8 +1,8 @@
     @import url(http://fonts.googleapis.com/css?family=Wellfleet);
     @import url(https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&display=swap);
     body {
-        background-color: #38761d;
-        background-image:url("images/greenback.jpg");
+        background-color: #43c4ffee;
+        background-image:url("images/blue3.jpg");
         color: #fff;
         font-family: 'Wellfleet', cursive;
         font-size: 100%;
@@ -21,11 +21,11 @@
     
     #start {
         text-align: center;
-        color: rgb(0, 216, 115);
+        color: #00ecfd;
         height: 40px;
         width: 300 px;
         margin-left: 46%;
-        font-size: 100%;
+        font-size: 110%;
         font-family: 'Wellfleet', serif;
     }
     
@@ -84,6 +84,7 @@
     }
     
     #score {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
         height: 10px;
         width: 300 px;
         font-size: 20px;
@@ -92,6 +93,7 @@
     
     #turn {
         text-align: left;
+        margin-left: 180px;
         height: 30px;
         width: 300 px;
         padding-top: 10px;
@@ -100,7 +102,7 @@
     
     #game {
         box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4);
-        background-image: url("images/formback2.jpg");
+        background-image: url("images/blue.jpg");
         padding: 5px;
         height: 300px;
         width: 50%;
@@ -136,12 +138,12 @@
     
     #restart {
         text-align: center;
-        color: rgb(0, 216, 115);
+        color: #00ecfd;
         height: 40px;
         width: 300 px;
         margin-left: 50%;
-        font-size: 100%;
-        font-family: 'Wellfleet', serif;
+        font-size: 110%;
+        font-family:'Wellfleet', serif;
         margin-bottom: 40px;
         margin-top: 20px;
     }
@@ -174,20 +176,20 @@
       
       .Game-Button{
         background-color: transparent;
-        border: 3px solid #00d170;
+        border: 3px solid #00ecfd;
         border-radius: 50px;
         -webkit-transition: all .15s ease-in-out;
         transition: all .15s ease-in-out;
-        color: #00d170;
+        color: #00ecfd;
       }
 
       .Game-Button:hover {
-        box-shadow: 0 0 10px 0 #00d170 inset, 0 0 20px 2px #00d170;
-        border: 3px solid #00d170;
+        box-shadow: 0 0 10px 0 #00ecfd inset, 0 0 20px 2px #00ecfd;
+        border: 3px solid #00ecfd;
       }
 
       .win-header{
-        color: #00d170;
+        color: #00ecfd;
       }
 
       .draw-header{

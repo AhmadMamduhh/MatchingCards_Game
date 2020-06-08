@@ -7,7 +7,7 @@ function startEvent() {
 
 
     // Change properties of the game board
-    document.getElementById("game").style.backgroundImage = `url("images/riddlerback.jpg")`;
+    document.getElementById("game").style.backgroundImage = `url("images/board.jpg")`;
     document.getElementById("game").style.width = "99%"
 
     // Reading players' names
@@ -48,8 +48,9 @@ function startEvent() {
 
     // Show the score of each player and whose turn it is
     element = document.getElementById("score");
-    element.innerHTML = `<img src="${player1Avatar}"/> <b>${player1Name}'s Score:</b> <span id="scoreValue1"> 0 </span> &nbsp;&nbsp; <img src="${player2Avatar}"/><b> ${player2Name}'s Score:</b> <span id="scoreValue2"> 0 </span>`;
-    element.style.backgroundImage = "url('images/greenscore.jpg')"
+    element.innerHTML = `<img src="${player1Avatar}"/> <b>${player1Name}'s Score:</b> <span id="scoreValue1"><b> 0 </b> </span> &nbsp;&nbsp; <img src="${player2Avatar}"/><b> ${player2Name}'s Score:</b> <span id="scoreValue2"> <b> 0 </b> </span>`;
+    element.style.backgroundImage = "url('images/gradient.jpg')"
+    element.style.boxShadow = "0 8px 12px 0 rgba(0, 0, 0, 0.4)"
     element.style.width = "580px"
     element.style.height = "80px"
     element = document.getElementById("turn");
@@ -173,7 +174,7 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
                 cards[previousImagePosition].onclick = function() {}
                 cards[clickedCardIndex].onclick = function() {}
                 let scoreValue1 = document.getElementById("scoreValue1")
-                scoreValue1.innerText = "" + scorePlayer1
+                scoreValue1.innerHTML = "<b>" + scorePlayer1 + "</b>"
             } else {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = `<img src="images/question_mark.png"/>`;
@@ -229,7 +230,7 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
                 cards[previousImagePosition].onclick = function() {}
                 cards[clickedCardIndex].onclick = function() {}
                 let scoreValue2 = document.getElementById("scoreValue2")
-                scoreValue2.innerText = "" + scorePlayer2
+                scoreValue2.innerHTML = "<b>" + scorePlayer2 + "</b>"
             } else {
                 setTimeout(function() {
                     cards[previousImagePosition].innerHTML = `<img src="images/question_mark.png"/>`;
@@ -249,7 +250,7 @@ function cardClicked(clickedCardIndex, imagesMatrix) {
 function restartEvent() {
 
     // Restore form background properties
-    document.getElementById("game").style.backgroundImage = `url("images/formback2.jpg")`
+    document.getElementById("game").style.backgroundImage = `url("images/blue.jpg")`
     document.getElementById("game").style.width = "50%"
     document.getElementById("game").style.height = "300px"
 
@@ -266,10 +267,12 @@ function restartEvent() {
     element = document.getElementById("level");
     element.innerHTML = 'Level: <select id="levels" name="levels">  <option value="easy" id="easy">Easy</option> <option value="medium" id="medium" selected="selected">  Medium</option> <option value="hard" id="hard">Hard</option> </select>';
 
-    // Make the score of each player and whose turn it is disappear
+    // Make the score of each player disappear
     element = document.getElementById("score");
     element.innerHTML = '';
     element.style.height = "0px";
+
+    // Make the turn text disappear
     element = document.getElementById("turn");
     element.innerHTML = '';
 
@@ -326,7 +329,13 @@ function restartEvent() {
 }
 
 function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
+
     if ((scorePlayer1 + scorePlayer2) == imagesMatrix.length) { // Condition that is true when the game board runs out of images
+
+        // Make the turn text disappear after the game has ended
+        setTimeout(function(){element = document.getElementById("turn");
+        element.innerHTML = '';}, 1500)
+
         if (scorePlayer1 == scorePlayer2) { // Condition that is true when both players have the same score at the end
             setTimeout(function() {
                 let gameHTML = document.getElementById("game");
