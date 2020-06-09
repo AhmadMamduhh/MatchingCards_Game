@@ -6,9 +6,11 @@ let player2Avatar = ''
 function startEvent() {
 
 
-    // Change properties of the game board
-    document.getElementById("game").style.backgroundImage = `url("images/board.jpg")`;
-    document.getElementById("game").style.width = "99%"
+    // Changing properties of the game board
+    document.getElementById("game").style.backgroundImage = `linear-gradient(to right, #1b6ca8,#1f4068)`;
+    document.getElementById("game").style.width = "68%"
+    document.getElementById("game").style.marginLeft = "200px"
+    document.getElementById("game").style.boxShadow = "2px 2px 15px #f9fcfb";
 
     // Reading players' names
     player1Name = document.getElementById('player1name').value
@@ -49,10 +51,12 @@ function startEvent() {
     // Show the score of each player and whose turn it is
     element = document.getElementById("score");
     element.innerHTML = `<img src="${player1Avatar}"/> <b>${player1Name}'s Score:</b> <span id="scoreValue1"><b> 0 </b> </span> &nbsp;&nbsp; <img src="${player2Avatar}"/><b> ${player2Name}'s Score:</b> <span id="scoreValue2"> <b> 0 </b> </span>`;
-    element.style.backgroundImage = "url('images/gradient.jpg')"
-    element.style.boxShadow = "0 8px 12px 0 rgba(0, 0, 0, 0.4)"
-    element.style.width = "580px"
+    element.style.backgroundImage = 'linear-gradient(to right, #1b6ca8,#1f4068)';
+    element.style.boxShadow = "2px 2px 15px #f9fcfb";
+    element.style.width = "1350px"
     element.style.height = "80px"
+    element.style.paddingTop = "5px"
+    element.style.textAlign = 'center'
     element = document.getElementById("turn");
     element.innerHTML = `<span id="currentPlayer"> <h2><b>${player1Name}'s turn </b></h2> </span>`;
 
@@ -71,11 +75,11 @@ function startEvent() {
     element = document.getElementById("game");
     if (level == 'easy') {
         element.innerHTML = gameHTMLEasy
-        element.style.height = "380px"
+        element.style.height = "395px"
         imagesPaths.splice(8, 11)
     } else if (level == 'medium') {
         element.innerHTML = gameHTMLMedium;
-        element.style.height = "470px"
+        element.style.height = "486px"
         imagesPaths.splice(10, 11)
     } else if (level == 'hard') {
         element.innerHTML = gameHTMLHard;
@@ -253,6 +257,7 @@ function restartEvent() {
     document.getElementById("game").style.backgroundImage = `url("images/blue.jpg")`
     document.getElementById("game").style.width = "50%"
     document.getElementById("game").style.height = "300px"
+    document.getElementById("game").style.marginLeft = "5px"
 
     // Reset the scores and make current the current turn belong to player 1
     scorePlayer1 = 0
@@ -271,6 +276,7 @@ function restartEvent() {
     element = document.getElementById("score");
     element.innerHTML = '';
     element.style.height = "0px";
+    element.style.paddingTop = "0px"
 
     // Make the turn text disappear
     element = document.getElementById("turn");
@@ -330,20 +336,28 @@ function restartEvent() {
 
 function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
 
-    if ((scorePlayer1 + scorePlayer2) == imagesMatrix.length) { // Condition that is true when the game board runs out of images
+    if ((scorePlayer1 + scorePlayer2) == 2) { // Condition that is true when the game board runs out of images
 
         // Make the turn text disappear after the game has ended
-        setTimeout(function(){element = document.getElementById("turn");
-        element.innerHTML = '';}, 1500)
+        //setTimeout(function(){element = document.getElementById("turn");
+        //element.innerHTML = '';}, 1500)
 
         if (scorePlayer1 == scorePlayer2) { // Condition that is true when both players have the same score at the end
             setTimeout(function() {
                 let gameHTML = document.getElementById("game");
+                let turnHTML = document.getElementById("turn");
 
-                // Remove the game board and show a fireworks image declaring that player 2 has won
-                gameHTML.innerHTML = `<h1 class="draw-header"> The game has ended in a draw. </h1>`
+                // Show a text declaring the game was a draw
+                turnHTML.innerHTML = `<h2 class="draw-header"> The game has ended in a draw. </h2>`
+                //turnHTML.style.marginLeft = '45%'
+
+                // Remove the game board and show a sad emoji image
+                gameHTML.innerHTML = '' 
                 gameHTML.style.height = "470px"
-                gameHTML.style.backgroundImage = `url("images/sad.png")`;
+                //gameHTML.style.backgroundRepeat = 'no-repeat'
+                gameHTML = ''
+                gameHTML.style.backgroundPosition= 'center'
+                gameHTML.style.backgroundImage = `url("images/sad4.gif")`;
 
                 [scorePlayer1, scorePlayer2] = [0, 0]; // reset players' scores
             }, 1000)
@@ -352,9 +366,14 @@ function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
         else if (scorePlayer1 > scorePlayer2) {// Condition that is true when player 1 has a higher score than player 2
             setTimeout(function() {
                 let gameHTML = document.getElementById("game");
+                let turnHTML = document.getElementById("turn");
 
-                // Remove the game board and show a fireworks image declaring that player 2 has won
-                gameHTML.innerHTML = `<h1 class="win-header"> <b><i>${player1Name}</i></b> has won the game! </h1>`
+                // Show the winner's name
+                turnHTML.innerHTML = `<h2 class="win-header"> <b><i>${player1Name}</i></b> has won the game! </h2>`
+               // turnHTML.style.marginLeft = '40%'
+
+                // Remove the game board and show a fireworks image declaring that player 1 has won
+                gameHTML.innerHTML = ''
                 gameHTML.style.height = "470px"
                 gameHTML.style.backgroundImage = `url("images/fireworks.gif")`;
 
@@ -364,9 +383,14 @@ function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
         else if (scorePlayer1 < scorePlayer2) { // Condition that is true when player 2 has a higher score than player 1
             setTimeout(function() {
                 let gameHTML = document.getElementById("game");
+                let turnHTML = document.getElementById("turn");
+
+                // Show the winner's name
+                turnHTML.innerHTML = `<h2 class="win-header"> <b><i>${player2Name}</i></b> has won the game! </h2>`
+               // turnHTML.style.marginLeft = '40%'
 
                 // Remove the game board and show a fireworks image declaring that player 2 has won
-                gameHTML.innerHTML = `<h1 class="win-header"> <b><i>${player2Name}</i></b> has won the game! </h1>`
+                gameHTML.innerHTML = ''
                 gameHTML.style.height = "470px"
                 gameHTML.style.backgroundImage = `url("images/fireworks.gif")`;
 

@@ -11,7 +11,7 @@
     
     h1 {
         text-align: center;
-        margin-left: 50%;
+        margin-left: 48%;
         background-repeat: no-repeat;
         white-space: nowrap;
         height: 50px;
@@ -21,7 +21,7 @@
     
     #start {
         text-align: center;
-        color: #00ecfd;
+        color: #00a0fd;
         height: 40px;
         width: 300 px;
         margin-left: 46%;
@@ -103,6 +103,7 @@
     #game {
         box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4);
         background-image: url("images/blue.jpg");
+        box-shadow: 2px 2px 15px #f9fcfb;
         padding: 5px;
         height: 300px;
         width: 50%;
@@ -119,7 +120,8 @@
     }
     
     .row {
-        margin: 2px 0px 0px 250px;
+        margin: 10px 0px 0px 100px;
+        margin-left: 115px;
         box-sizing: border-box;
     }
     
@@ -138,10 +140,10 @@
     
     #restart {
         text-align: center;
-        color: #00ecfd;
+        color: #00a0fd;
         height: 40px;
         width: 300 px;
-        margin-left: 50%;
+        margin-left: 45%;
         font-size: 110%;
         font-family:'Wellfleet', serif;
         margin-bottom: 40px;
@@ -175,8 +177,8 @@
       }
       
       .Game-Button{
-        background-color: transparent;
-        border: 3px solid #00ecfd;
+        background-color: white;
+        border: 3px solid #00a0fd;
         border-radius: 50px;
         -webkit-transition: all .15s ease-in-out;
         transition: all .15s ease-in-out;
@@ -184,14 +186,16 @@
       }
 
       .Game-Button:hover {
-        box-shadow: 0 0 10px 0 #00ecfd inset, 0 0 20px 2px #00ecfd;
-        border: 3px solid #00ecfd;
+        box-shadow: 0 0 10px 0 #00a0fd inset, 0 0 20px 2px #00ecfd;
+        border: 3px solid #00a0fd;
       }
 
       .win-header{
-        color: #00ecfd;
+        color: #00d8bb;
+        margin-left: 26%;
       }
 
       .draw-header{
         color: red;
+        margin-left: 26%;
       }
