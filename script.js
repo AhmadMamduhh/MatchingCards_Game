@@ -336,7 +336,7 @@ function restartEvent() {
 
 function gameResults(scorePlayer1, scorePlayer2, imagesMatrix){
 
-    if ((scorePlayer1 + scorePlayer2) == 2) { // Condition that is true when the game board runs out of images
+    if ((scorePlayer1 + scorePlayer2) == imagesMatrix.length) { // Condition that is true when the game board runs out of images
 
         // Make the turn text disappear after the game has ended
         //setTimeout(function(){element = document.getElementById("turn");
